@@ -1,8 +1,14 @@
 package de.hawlandshut.pluto22_ukw;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,9 +26,42 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        // TODO: nur zum Testen...
+        Intent intent = new Intent(getApplication(), SignInActivity.class);
+        startActivity(intent);
+
         Log.d(TAG,"in onStart");
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch( item.getItemId() ){
+            case R.id.mainMenuItem1:
+                Toast.makeText(getApplicationContext(), "You pressed Item 1.", Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.mainMenuItem2:
+                Toast.makeText(getApplicationContext(), "You pressed Item 2.", Toast.LENGTH_LONG).show();
+                return true;
+
+            case R.id.mainMenuItem3:
+                Toast.makeText(getApplicationContext(), "You pressed Item 3.", Toast.LENGTH_LONG).show();
+                return true;
+
+        }
+
+
+        return true;
+    }
+
+    // TODO: Remove later
     @Override
     protected void onResume() {
         super.onResume();
