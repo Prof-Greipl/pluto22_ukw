@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    tools:context=".ManageAccountActivity">
+
+
+    <TextView
+        android:id="@+id/manageAccountTextViewEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="You should never see this." />
+
+    <TextView
+        android:id="@+id/manageAccountTextViewAccountVerified"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="You should never see this." />
+
+    <TextView
+        android:id="@+id/manageAccountTextViewId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="You should never see this." />
+
+    <Button
+        android:id="@+id/manageAccountButtonSignOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Out" />
+
+    <Button
+        android:id="@+id/manageAccountButtonSendActivationMail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send activation Mail" />
+
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+    <TextView
+        android:id="@+id/manageAccountTextViewHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="For security reasons please enter your password." />
+
+    <EditText
+        android:id="@+id/manageAccountPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        />
+
+    <Button
+        android:id="@+id/manageAccountButtonDeleteAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#F4511E"
+        android:text="Delete Account" />
+
+
+</LinearLayout>

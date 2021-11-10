@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         // TODO: nur zum Testen...
-        Intent intent = new Intent(getApplication(), SignInActivity.class);
+        Intent intent = new Intent(getApplication(), ManageAccountActivity.class);
         startActivity(intent);
 
         Log.d(TAG,"in onStart");
@@ -54,10 +54,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.mainMenuItem3:
                 Toast.makeText(getApplicationContext(), "You pressed Item 3.", Toast.LENGTH_LONG).show();
                 return true;
-
         }
-
-
         return true;
     }
 

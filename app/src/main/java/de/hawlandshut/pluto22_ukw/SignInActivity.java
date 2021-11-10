@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-public class SignInActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final String TAG = "xxSignInActivity";
 
@@ -32,8 +34,45 @@ public class SignInActivity extends AppCompatActivity {
         mButtonCreateAccount = findViewById( R.id.signInButtonCreateAccount);
 
         // TODO: Remove later, only for testing
-        mEditTextEmail.setText("dgreipl@haw-landshut.de");
+        mEditTextEmail.setText("dietergreipl@gmail.com");
         mEditTextPassword.setText("123456");
         Log.d(TAG, "in onCreate");
+
+        // Schritt 3c (im Script 3.3): Implement Listeners
+        mButtonSignIn.setOnClickListener( this );
+        mButtonCreateAccount.setOnClickListener( this );
+        mButtonForgotPassword.setOnClickListener( this );
+    }
+
+    @Override
+    public void onClick(View v) {
+        int i = v.getId();
+        switch (i) {
+            case R.id.signInButtonCreateAccount:
+                doCreateAccount();
+                return;
+
+            case R.id.signInButtonForgotPassword:
+                doForgotPassword();
+                return;
+
+            case R.id.signInButtonSignIn:
+                doSignIn();
+                return;
+        }
+    }
+
+    // Business Logic
+    // TODO: Implement
+    private void doSignIn() {
+        Toast.makeText(getApplication(), "pressed signIn", Toast.LENGTH_LONG).show();
+    }
+
+    private void doForgotPassword() {
+        Toast.makeText(getApplication(), "pressed forgotPassword", Toast.LENGTH_LONG).show();
+    }
+
+    private void doCreateAccount() {
+        Toast.makeText(getApplication(), "pressed createAccount", Toast.LENGTH_LONG).show();
     }
 }
