@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         // TODO: nur zum Testen...
-        Intent intent = new Intent(getApplication(), ManageAccountActivity.class);
+        Intent intent = new Intent(getApplication(), WebViewActivity.class);
         startActivity(intent);
 
         Log.d(TAG,"in onStart");
