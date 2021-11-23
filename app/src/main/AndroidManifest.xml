@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pluto22_ukw">
         <activity
+            android:name=".PostActivity"
+            android:exported="true" />
+        <activity
             android:name=".ManageAccountActivity"
             android:exported="true" />
         <activity
