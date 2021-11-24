@@ -3,14 +3,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="Item 1"
-        android:id="@+id/mainMenuItem1" />
-    <item
-        android:title="Item 2"
-        android:id="@+id/mainMenuItem2" />
+        android:id="@+id/mainMenuCreateTestuser"
+        android:title="Create Testuser" />
 
     <item
-        android:title="Item 3"
-        android:id="@+id/mainMenuItem3" />
+        android:id="@+id/mainMenuDeleteTestuser"
+        android:title="Delete Testuser" />
+
+    <item
+        android:id="@+id/mainMenuTestAuthStatus"
+        android:title="Test Auth Status" />
+
+    <item
+        android:id="@+id/mainMenuSignInTestuser"
+        android:title="Sign in Testuser" />
+
+    <item
+        android:id="@+id/mainMenuSignOutTestuser"
+        android:title="Sign Out Testuser" />
+
+    <item
+        android:id="@+id/mainMenuSendActivationMail"
+        android:title="Send activation mail." />
+
+    <item
+        android:id="@+id/mainMenuSendResetPasswordMail"
+        android:title="Send reset password mail." />
 
 </menu>
