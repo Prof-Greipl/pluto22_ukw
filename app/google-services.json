@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "573312108846",
+    "project_id": "pluto22-ukw",
+    "storage_bucket": "pluto22-ukw.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573312108846:android:d3ebf9abf9b9f3c466d2bf",
+        "android_client_info": {
+          "package_name": "de.hawlandshut.pluto22_ukw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573312108846-3k5eh4bbo5s2ipremh8trnetvdkevn9s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9_TMq9OYqxcaPb9pK8HJyWPpjWiA2byU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573312108846-3k5eh4bbo5s2ipremh8trnetvdkevn9s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
