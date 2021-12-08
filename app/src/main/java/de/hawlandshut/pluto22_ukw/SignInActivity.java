@@ -1,5 +1,6 @@
 package de.hawlandshut.pluto22_ukw;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -66,10 +72,43 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     // TODO: Implement
     private void doSignIn() {
         Toast.makeText(getApplication(), "pressed signIn", Toast.LENGTH_LONG).show();
+        String email = mEditTextEmail.getText().toString();
+        String password = mEditTextPassword.getText().toString();
+
+        // TODO: Check validity of email and password - Home work
+
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "You are signed in.", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Sign in failed.", Toast.LENGTH_LONG).show();
+                            Log.e(TAG, "Error in user creation : " + task.getException().getMessage());
+                        }
+                    }
+                });
     }
 
     private void doForgotPassword() {
-        Toast.makeText(getApplication(), "pressed forgotPassword", Toast.LENGTH_LONG).show();
+
+         String email = mEditTextEmail.getText().toString();
+
+        // TODO: Check, ob die Variable email eine korrekte Adresse enthält.
+
+        FirebaseAuth.getInstance().sendPasswordResetEmail( email )
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Password reset mail sent.", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Sending password reset mail  failed.", Toast.LENGTH_LONG).show();
+                            Log.e(TAG, "Error in sending password reset mail: " + task.getException().getMessage());
+                        }
+                    }
+                });
     }
 
     private void doCreateAccount() {
