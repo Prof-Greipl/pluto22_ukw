@@ -76,6 +76,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         String password = mEditTextPassword.getText().toString();
 
         // TODO: Check validity of email and password - Home work
+        if (password.length()<2){
+            Toast.makeText(getApplicationContext(), "Password too short.", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

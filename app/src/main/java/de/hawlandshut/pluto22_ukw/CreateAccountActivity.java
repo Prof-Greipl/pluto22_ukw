@@ -64,9 +64,19 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         Log.d(TAG, "called created user");
         String email = mEditTextEmail.getText().toString();
         String password = mEditTextPassword.getText().toString();
+        String password1 = mEditTextPassword1.getText().toString();
 
         //TODO: Check E-Mail and equality of passwords (MUST) - Homework
+        if (password.length()<2 || password1.length() < 2 ){
+            Toast.makeText(getApplicationContext(), "Password to short", Toast.LENGTH_LONG).show();
+            return;
+        }
 
+        if (!password1.equals(password)){
+            Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_LONG).show();
+            return;
+        }
+        
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

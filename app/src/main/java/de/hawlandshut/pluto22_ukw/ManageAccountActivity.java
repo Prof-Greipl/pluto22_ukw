@@ -82,8 +82,12 @@ public class ManageAccountActivity extends AppCompatActivity implements View.OnC
 
         String email = mUser.getEmail();
         String password = mEditTextPassword.getText().toString();
-
+        if (password.length()<2){
+            Toast.makeText(getApplicationContext(), "Password to short", Toast.LENGTH_LONG).show();
+            return;
+        }
         // TODO: Check password - if empty - HOMEWORK
+
 
         // Reauthenticate with Credential
         AuthCredential credential;
