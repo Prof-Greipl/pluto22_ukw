@@ -50,6 +50,20 @@ public class ManageAccountActivity extends AppCompatActivity implements View.OnC
         mButtonDeleteAccount.setOnClickListener( this );
         mButtonSignOut.setOnClickListener( this );
         mButtonSendActivationMail.setOnClickListener( this );
+
+        // Define Static Textlines
+        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (mUser == null){
+            Log.e(TAG, "Fatal: Null user in ManageAccount");
+        } else {
+            mTextViewMail.setText("E-Mail : " + mUser.getEmail());
+            mTextViewId.setText("Your id : " + mUser.getUid() );
+            mTextViewAccountVerified.setText("Account verified : " + mUser.isEmailVerified());
+        }
+
+        // TODO: Only for testing - remove later
+        mEditTextPassword.setText("123456");
+
     }
 
     @Override
@@ -115,6 +129,7 @@ public class ManageAccountActivity extends AppCompatActivity implements View.OnC
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Account deleted.", Toast.LENGTH_LONG).show();
+                            finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "Deletion failed.", Toast.LENGTH_LONG).show();
                             Log.e(TAG, "Error in deleting account : " + task.getException().getMessage());
@@ -156,5 +171,6 @@ public class ManageAccountActivity extends AppCompatActivity implements View.OnC
 
         FirebaseAuth.getInstance().signOut();
         Toast.makeText(getApplicationContext(), "You are signed out.", Toast.LENGTH_LONG).show();
+        finish();
     }
 }

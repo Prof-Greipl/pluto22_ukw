@@ -76,13 +76,14 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             Toast.makeText(getApplicationContext(), "Passwords do not match", Toast.LENGTH_LONG).show();
             return;
         }
-        
+
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "User created.", Toast.LENGTH_LONG).show();
+                            finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "User creation failed.", Toast.LENGTH_LONG).show();
                             Log.e(TAG, "Error in user creation : " + task.getException().getMessage());

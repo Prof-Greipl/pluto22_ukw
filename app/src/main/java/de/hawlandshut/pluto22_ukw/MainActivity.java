@@ -121,33 +121,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.mainMenuCreateTestuser:
-                doCreateUser();
+            case R.id.mainMenuManageAccount:
+                Intent intent = new Intent(getApplication(), ManageAccountActivity.class);
+                startActivity(intent);
                 return true;
 
-            case R.id.mainMenuDeleteTestuser:
-                doDeleteUser();
-                return true;
-
-            case R.id.mainMenuTestAuthStatus:
-                doTestAuthStatus();
-                return true;
-
-            case R.id.mainMenuSignInTestuser:
-                doSignIn();
-                return true;
-
-            case R.id.mainMenuSignOutTestuser:
-                doSignOut();
-                return true;
-
-            case R.id.mainMenuSendActivationMail:
-                doSendActivationMail();
-                return true;
-
-            case R.id.mainMenuSendResetPasswordMail:
-                doSendResetPasswordMail();
-                return true;
         }
         return true;
     }

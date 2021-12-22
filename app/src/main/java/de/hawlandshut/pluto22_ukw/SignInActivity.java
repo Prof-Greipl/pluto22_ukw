@@ -3,6 +3,7 @@ package de.hawlandshut.pluto22_ukw;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -51,11 +53,22 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null ){
+            // Wie können nur von der CreateAccount-Activity kommen.
+           finish();
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         int i = v.getId();
         switch (i) {
             case R.id.signInButtonCreateAccount:
-                doCreateAccount();
+                doGotoCreateAccount();
                 return;
 
             case R.id.signInButtonForgotPassword:
@@ -71,7 +84,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     // Business Logic
     // TODO: Implement
     private void doSignIn() {
-        Toast.makeText(getApplication(), "pressed signIn", Toast.LENGTH_LONG).show();
         String email = mEditTextEmail.getText().toString();
         String password = mEditTextPassword.getText().toString();
 
@@ -87,6 +99,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "You are signed in.", Toast.LENGTH_LONG).show();
+                            finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "Sign in failed.", Toast.LENGTH_LONG).show();
                             Log.e(TAG, "Error in user creation : " + task.getException().getMessage());
@@ -115,7 +128,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 });
     }
 
-    private void doCreateAccount() {
-        Toast.makeText(getApplication(), "pressed createAccount", Toast.LENGTH_LONG).show();
+    private void doGotoCreateAccount() {
+        Intent intent = new Intent(getApplication(), CreateAccountActivity.class);
+        startActivity(intent);
     }
 }
