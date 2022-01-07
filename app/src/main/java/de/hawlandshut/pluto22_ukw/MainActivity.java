@@ -24,6 +24,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -100,6 +102,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        DatabaseReference mDatabase =  FirebaseDatabase.getInstance().getReference("App/Version");
+        mDatabase.setValue("V1.0");
+
         FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
 
         if (mUser == null ){
@@ -120,9 +125,16 @@ public class MainActivity extends AppCompatActivity {
     // TODO: Only for testing
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        Intent intent;
         switch (item.getItemId()) {
+            case R.id.mainMenuPost:
+                intent = new Intent(getApplication(), PostActivity.class);
+                startActivity(intent);
+                return true;
+
             case R.id.mainMenuManageAccount:
-                Intent intent = new Intent(getApplication(), ManageAccountActivity.class);
+                intent = new Intent(getApplication(), ManageAccountActivity.class);
                 startActivity(intent);
                 return true;
 

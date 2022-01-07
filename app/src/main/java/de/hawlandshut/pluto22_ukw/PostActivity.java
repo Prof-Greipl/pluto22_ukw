@@ -1,12 +1,25 @@
 package de.hawlandshut.pluto22_ukw;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PostActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -40,6 +53,32 @@ public class PostActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void doPost() {
-        Toast.makeText(getApplication(), "pressed Post", Toast.LENGTH_LONG).show();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null){
+            Log.e(TAG, "Null user in PostActivity");
+        }  else {
+            Map<String,Object> postMap = new HashMap<>();
+            postMap.put("uid", user.getUid() );
+            postMap.put("author", user.getEmail() );
+            postMap.put("title", mEditTextTitle.getText().toString() );
+            postMap.put("body", mEditTextText.getText().toString() );
+            postMap.put("timestamp", ServerValue.TIMESTAMP);
+
+            DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("posts/");
+            mDatabase.push().setValue( postMap )
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.e(TAG, "Schreibfehler " + e.getLocalizedMessage() );
+                }
+            })
+            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Log.e(TAG, "Success ! ");
+                }
+            })
+            ;
+        }
     }
 }
