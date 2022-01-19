@@ -37,15 +37,8 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         mEditTextPassword1 = findViewById( R.id.createAccountEditTextPassword1 );
         mButtonCreateAccount = findViewById( R.id.createAccountButtonCreateAccount );
 
-        // TODO: Remove later, only for testing
-        mEditTextEmail.setText("dietergreipl@gmail.com");
-        mEditTextPassword.setText("123456");
-        mEditTextPassword1.setText("123456");
-
-
         // 3.3 Implement Listeners
         mButtonCreateAccount.setOnClickListener( this );
-
     }
 
     @Override
@@ -66,7 +59,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         String password = mEditTextPassword.getText().toString();
         String password1 = mEditTextPassword1.getText().toString();
 
-        //TODO: Check E-Mail and equality of passwords (MUST) - Homework
         if (password.length()<2 || password1.length() < 2 ){
             Toast.makeText(getApplicationContext(), "Password to short", Toast.LENGTH_LONG).show();
             return;

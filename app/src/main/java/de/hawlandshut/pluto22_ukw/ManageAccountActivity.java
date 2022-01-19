@@ -60,10 +60,6 @@ public class ManageAccountActivity extends AppCompatActivity implements View.OnC
             mTextViewId.setText("Your id : " + mUser.getUid() );
             mTextViewAccountVerified.setText("Account verified : " + mUser.isEmailVerified());
         }
-
-        // TODO: Only for testing - remove later
-        mEditTextPassword.setText("123456");
-
     }
 
     @Override
@@ -100,8 +96,6 @@ public class ManageAccountActivity extends AppCompatActivity implements View.OnC
             Toast.makeText(getApplicationContext(), "Password to short", Toast.LENGTH_LONG).show();
             return;
         }
-        // TODO: Check password - if empty - HOMEWORK
-
 
         // Reauthenticate with Credential
         AuthCredential credential;

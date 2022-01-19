@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class PostActivity extends AppCompatActivity implements View.OnClickListener{
 
-    public static final String TAG = "xxMainActivity";
+    public static final String TAG = "xxPostActivity";
 
     EditText mEditTextTitle;
     EditText mEditTextText;

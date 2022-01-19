@@ -41,11 +41,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         mButtonForgotPassword = findViewById( R.id.signInButtonForgotPassword);
         mButtonCreateAccount = findViewById( R.id.signInButtonCreateAccount);
 
-        // TODO: Remove later, only for testing
-        mEditTextEmail.setText("dietergreipl@gmail.com");
-        mEditTextPassword.setText("123456");
-        Log.d(TAG, "in onCreate");
-
         // Schritt 3c (im Script 3.3): Implement Listeners
         mButtonSignIn.setOnClickListener( this );
         mButtonCreateAccount.setOnClickListener( this );
@@ -82,12 +77,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     // Business Logic
-    // TODO: Implement
     private void doSignIn() {
         String email = mEditTextEmail.getText().toString();
         String password = mEditTextPassword.getText().toString();
 
-        // TODO: Check validity of email and password - Home work
         if (password.length()<2){
             Toast.makeText(getApplicationContext(), "Password too short.", Toast.LENGTH_LONG).show();
             return;
@@ -110,10 +103,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     private void doForgotPassword() {
 
-         String email = mEditTextEmail.getText().toString();
-
-        // TODO: Check, ob die Variable email eine korrekte Adresse enthält.
-
+        String email = mEditTextEmail.getText().toString();
         FirebaseAuth.getInstance().sendPasswordResetEmail( email )
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
